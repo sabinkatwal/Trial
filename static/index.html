@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Call App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>Video Call App</h2>
+
+  <div class="join-box">
+    <input id="room" placeholder="Enter room id">
+    <button onclick="joinRoom()">Join</button>
+  </div>
+
+  <div class="controls">
+    <button onclick="toggleMic()">🎤 Mute</button>
+    <button onclick="toggleCamera()">📷 Camera</button>
+  </div>
+
+  <div class="videos">
+    <video id="localVideo" autoplay playsinline muted></video>
+    <video id="remoteVideo" autoplay playsinline></video>
+  </div>
+
+  <div class="chat">
+    <div id="chatBox"></div>
+
+    <div class="chat-input">
+      <input id="msg" placeholder="Type message">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
