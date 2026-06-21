@@ -14,7 +14,7 @@ const config = {
 async function joinRoom() {
   const room = document.getElementById("room").value;
 
-  const rawSignal = (document.getElementById("signal") && document.getElementById("signal").value) || 'ws://localhost:8000';
+  const rawSignal = (document.getElementById("signal") && document.getElementById("signal").value) || 'wss://video-call-backend-jx88.onrender.com';
   let base = rawSignal.trim();
   if (!base.startsWith('ws://') && !base.startsWith('wss://')) {
     if (base.startsWith('http://')) base = base.replace('http://', 'ws://');
