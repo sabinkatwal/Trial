@@ -14,7 +14,15 @@ const config = {
 async function joinRoom() {
   const room = document.getElementById("room").value;
 
-  ws = new WebSocket(`ws://localhost:8000/ws/${room}`);
+  const rawSignal = (document.getElementById("signal") && document.getElementById("signal").value) || 'ws://localhost:8000';
+  let base = rawSignal.trim();
+  if (!base.startsWith('ws://') && !base.startsWith('wss://')) {
+    if (base.startsWith('http://')) base = base.replace('http://', 'ws://');
+    else if (base.startsWith('https://')) base = base.replace('https://', 'wss://');
+  }
+  if (base.endsWith('/')) base = base.slice(0, -1);
+
+  ws = new WebSocket(`${base}/ws/${room}`);
 
   ws.onmessage = async (message) => {
     const data = JSON.parse(message.data);
